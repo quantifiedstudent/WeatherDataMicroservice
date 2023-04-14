@@ -1,13 +1,13 @@
 import fetch from "node-fetch";
-import BaseCanvasAPIReciverService from "./infrastructure/recivers/BaseWeatherReciverService";
+import BaseWeatherReciverService from "./infrastructure/recivers/BaseWeatherReciverService";
 import * as fs from "fs";
 
-export default class ManualFetch extends BaseCanvasAPIReciverService {
+export default class ManualFetch extends BaseWeatherReciverService {
   // GET /api/v1/courses/:course_id/assignments/:assignment_id/submissions/:user_id
   url =
     "https://fhict.instructure.com/api/v1/courses/12886/assignments/216054/submissions/24412";
   constructor(token: string) {
-    super(token);
+    super();
   }
 
   async GetDailyWeather() {
@@ -35,35 +35,9 @@ export default class ManualFetch extends BaseCanvasAPIReciverService {
       console.log(data);
       // const data: Object = []
       const json = JSON.stringify(data);
-      fs.writeFile("weather2023.json", json, (err) => {
+      fs.writeFile("./src/weather2023.json", json, (err) => {
         if (err) console.log("Error writing file:", err);
       });
-    } catch (error) {
-      let message;
-      if (error instanceof Error) message = error.message;
-      else message = String(error);
-      // we'll proceed, but let's report it
-      console.error(message);
-      console.log(error);
-    }
-  }
-
-  async GetAssignmet() {
-    const header = {
-      headers: {
-        Authorization: `Bearer ${this.token}`,
-      },
-    };
-
-    const options = {
-      method: "GET",
-      ...header,
-    };
-
-    try {
-      const response = await fetch(this.url, options);
-      const data = await response.json();
-      console.log(data);
     } catch (error) {
       let message;
       if (error instanceof Error) message = error.message;
