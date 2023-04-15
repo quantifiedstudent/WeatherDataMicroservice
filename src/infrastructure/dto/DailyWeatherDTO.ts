@@ -2,10 +2,10 @@ export default interface DailyWeatherDTO {
   meta: {
     generated: string;
   };
-  data: WeatherData[];
+  data: WeatherDataDTO[];
 }
 
-interface WeatherData {
+export interface WeatherDataDTO {
   date: string;
   tavg: number;
   tmin: number;
