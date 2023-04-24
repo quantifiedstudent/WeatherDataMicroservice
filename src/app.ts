@@ -1,22 +1,13 @@
 import ManualFetch from "./manualFetching";
 import express from "express";
-import Joi from "joi";
 import DailyWeatherHandler from "./application/domainEventsHandlers/DailyWeatherHandler";
 import { IDailyWeatherHandler } from "./domain/interfaces/IDomainEventHandlers/IDailyWeatherHandler";
-import { resourceUsage } from "process";
 
 // const manual: ManualFetch = new ManualFetch("a");
 
 // manual.GetDailyWeather();
 
 const dailyWeatherHandler: IDailyWeatherHandler = new DailyWeatherHandler();
-
-// const weather = await dailyWeatherHandler.GetDailyWeather(
-//   new Date("2023-01-01"),
-//   new Date("2023-04-12")
-// );
-
-// console.log(weather);
 
 const app = express();
 // const PORT:number = parseInt(process.env.PORT) || 8080;
@@ -30,16 +21,16 @@ app.get("/", (req, res) => {
 });
 
 app.get("/dailyWeather", async (req, res) => {
-  let startDate = req.query.startDate;
-  let endDate = req.query.endDate;
+  let startDate = <string>req.query.startDate;
+  let endDate = <string>req.query.endDate;
 
   // console.log(startDate, endDate)
   if(validateDate(startDate) && validateDate(endDate))
   {
     try {
       const weather = await dailyWeatherHandler.GetDailyWeather(
-        new Date(<string>startDate),
-        new Date(<string>endDate)
+        new Date(startDate),
+        new Date(endDate)
       );
       return res.status(200).send(weather);
     } catch (error) {
@@ -56,7 +47,7 @@ app.get("/dailyWeather", async (req, res) => {
   {
     try {
       const weather = await dailyWeatherHandler.GetDailyWeather(
-        new Date(<string>startDate),
+        new Date(startDate),
         new Date()
       );
       return res.status(200).send(weather);
@@ -75,12 +66,12 @@ app.get("/dailyWeather", async (req, res) => {
   }
 });
 
-const validateDate = (date: unknown) => {
-  if (typeof date !== 'string' && date instanceof String == false)
+const validateDate = (date: string) => {
+  if (typeof(date) !== 'string')
   {
     return false
   }
-  if ((<string>date).length != 10)
+  if (date.length != 10)
   {
     return false;
   }

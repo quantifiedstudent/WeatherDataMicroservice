@@ -16,5 +16,5 @@
 
 >Example
 
-`http://localhost:7000/dailyWeather?startDate=2023-06-07&endDate=2023-04-15` - Weather for time period between 2023-06-07 and 2023-04-15
-`http://localhost:7000/dailyWeather?startDate=2023-06-07` - Weather for time period between 2023-06-07 and 2023-04-15 and date of sending request
+`http://localhost:7000/dailyWeather?startDate=2022-04-07&endDate=2022-06-15` - Weather for time period between 2022-04-07 and 2022-06-15
+`http://localhost:7000/dailyWeather?startDate=2022-06-07` - Weather for time period between 2022-06-07 and 2022-04-15 and date of sending request
