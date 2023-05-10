@@ -7,6 +7,8 @@ import fetch from "node-fetch";
 export default class DayAPIReciverService extends BaseWeatherReciverService implements IDailyWeatherAPIReciverService{
   apiRoute = (startDate: Date, endDate: Date) =>
     `archive?latitude=51.44&longitude=5.48&start_date=${startDate.toISOString().split('T')[0]}&end_date=${endDate.toISOString().split('T')[0]}&daily=temperature_2m_mean,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max&timezone=Europe%2FBerlin`;
+  // https://api.open-meteo.com/v1/forecast?latitude=52.52&longitude=13.41&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max&timezone=Europe%2FBerlin
+  // https://open-meteo.com/en/docs#latitude=51.44&longitude=5.48&daily=temperature_2m_max,temperature_2m_min,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max&timezone=Europe%2FBerlin
 
   constructor() {
     super();
