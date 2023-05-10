@@ -1,5 +1,5 @@
 import { IDailyWeatherHandler } from "../../domain/interfaces/IDomainEventHandlers/IDailyWeatherHandler";
-import { DailyWeather } from "../../domain/models/DailyWeather";
+import DailyWeather from "../../domain/models/DailyWeather";
 import DailyWeatherHandler from "../domainEventsHandlers/DailyWeatherHandler";
 
 export default class CommandDailyWeatherHandler {
@@ -9,7 +9,7 @@ export default class CommandDailyWeatherHandler {
     this.dayHandler = new DailyWeatherHandler();
   }
 
-  async GetDailyWeather(startDate: Date, endDate: Date): Promise<DailyWeather[]> {
+  async GetDailyWeather(startDate: Date, endDate: Date): Promise<DailyWeather> {
     try {
       return await this.dayHandler.GetDailyWeather(startDate, endDate);
     } catch (error) {

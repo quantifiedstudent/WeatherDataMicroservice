@@ -1,4 +1,4 @@
-export default interface DailyWeatherDTO {
+export default interface DailyWeatherHistoricalDTO {
   latitude: number;
   longitude: number;
   generationtime_ms: number;
@@ -6,10 +6,11 @@ export default interface DailyWeatherDTO {
   timezone: string;
   timezone_abbreviation: string;
   elevation: number;
-  daily_units: DailyUnits;
-  daily: DailyData;
+  daily_units: DailyUnitsHistoricalDTO;
+  daily: DailyDataHistoricalDTO;
 }
-interface DailyUnits {
+
+export interface DailyUnitsHistoricalDTO {
   time: string;
   temperature_2m_mean: string;
   sunrise: string;
@@ -20,7 +21,7 @@ interface DailyUnits {
   windspeed_10m_max: string;
 }
 
-interface DailyData {
+export interface DailyDataHistoricalDTO {
   time: string[];
   temperature_2m_mean: number[];
   sunrise: string[];
