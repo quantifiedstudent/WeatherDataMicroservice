@@ -1,32 +1,21 @@
 import BaseWeatherReciverService from "./BaseWeatherReciverService";
 import DailyWeatherDTO from "../dto/DailyWeatherDTO";
-import { DailyWeather } from "../../domain/models/DailyWeather";
 import { IDailyWeatherAPIReciverService } from "../../domain/interfaces/IAPIReciverServices/IDailyWeatherAPIReciverService";
 import * as fs from "fs";
 import fetch from "node-fetch";
 
 export default class DayAPIReciverService extends BaseWeatherReciverService implements IDailyWeatherAPIReciverService{
   apiRoute = (startDate: Date, endDate: Date) =>
-    `/stations/daily?station=06370&start=${startDate.toISOString().split('T')[0]}&end=${endDate.toISOString().split('T')[0]}`;
+    `archive?latitude=51.44&longitude=5.48&start_date=${startDate.toISOString().split('T')[0]}&end_date=${endDate.toISOString().split('T')[0]}&daily=temperature_2m_mean,sunrise,sunset,precipitation_sum,rain_sum,snowfall_sum,windspeed_10m_max&timezone=Europe%2FBerlin`;
 
   constructor() {
     super();
   }
 
   async GetDailyWeather(startDate: Date, endDate: Date): Promise<DailyWeatherDTO> {
-    // Rapid API login
-    // Login: quantifiedstudent@op.pl
-    // Pass: zaq1@WSX
-    // Onet Email
-    // Login: quantifiedstudent@op.pl
-    // Pass: zaq1@WSX
-
+    // Open-Meteo
     const options = {
       method: "GET",
-      headers: {
-        "X-RapidAPI-Key": "fb2760110cmsh2c9450db31a4689p1f1eacjsn37a7c6f10741",
-        "X-RapidAPI-Host": "meteostat.p.rapidapi.com",
-      },
     };
 
     try {

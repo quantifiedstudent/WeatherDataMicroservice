@@ -2,7 +2,7 @@ import ManualFetch from "./manualFetching";
 import express from "express";
 import DailyWeatherHandler from "./application/domainEventsHandlers/DailyWeatherHandler";
 import { IDailyWeatherHandler } from "./domain/interfaces/IDomainEventHandlers/IDailyWeatherHandler";
-import { DailyWeather } from "./domain/models/DailyWeather";
+import DailyWeather from "./domain/models/DailyWeather";
 
 // const manual: ManualFetch = new ManualFetch("a");
 
@@ -45,7 +45,7 @@ app.get("/dailyWeather", async (req, res) => {
 async function fetchDailyWeather(
   startDate: Date,
   endDate: Date
-): Promise<DailyWeather[]> {
+): Promise<DailyWeather> {
   try {
     const weather = await dailyWeatherHandler.GetDailyWeather(
       new Date(startDate),

@@ -1,5 +1,5 @@
-import { DailyWeather } from "../../models/DailyWeather";
+import DailyWeather from "../../models/DailyWeather";
 
 export interface IDailyWeatherHandler {
-    GetDailyWeather(startDate: Date, endDate: Date): Promise<DailyWeather[]>;
+    GetDailyWeather(startDate: Date, endDate: Date): Promise<DailyWeather>;
 }
