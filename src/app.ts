@@ -1,10 +1,7 @@
-import ManualFetch from "./manualFetching";
 import express from "express";
 import DailyWeatherHandler from "./application/domainEventsHandlers/DailyWeatherHandler";
 import { IDailyWeatherHandler } from "./domain/interfaces/IDomainEventHandlers/IDailyWeatherHandler";
 import DailyWeather from "./domain/models/DailyWeather";
-
-// const manual: ManualFetch = new ManualFetch("a");
 
 // manual.GetDailyWeather();
 
