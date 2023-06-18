@@ -1,4 +1,4 @@
-# WeatherDataMicroservice
+# Weather Data Microservice
 ## Setup Local Development Environment
 1. Install all dependencies using `npm i`
 2. Run the project with `npm run start:dev`
