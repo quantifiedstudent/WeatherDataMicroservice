@@ -1,5 +1,7 @@
 # WeatherDataMicroservice
-
+## Setup Local Development Environment
+1. Install all dependencies using `npm i`
+2. Run the project with `npm run start:dev`
 ## Get daily weather
 >Gets daily weather in Eindhoven for specified period of time.
 
